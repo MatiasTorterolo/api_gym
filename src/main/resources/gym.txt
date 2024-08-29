@@ -1,0 +1,102 @@
+Este backend se va a encargar de la transferencia de informacion entre un usuario
+
+que puede ser PROFESOR o ADMIN
+
+el usuario PROFESOR tendria la posibilidad de agregar CLIENTES y crear, editar y eliminar su rutina de ejercicios
+
+el ADMIN es el encargado de cargar la imagen predeterminada para cada ejercicio asi el cliente tiene un ejemplo de
+como debe hacerse, ante alguna duda puede consulta a su entrenador de turno
+
+el ADMIN es el que puede crear, modificar o eliminar SUCURSALES
+
+si el ejercicio que el PROFESOR le destina a un CLIENTE es muy especifico y no se puede encontrar una imagen predeterminada
+siempre tendra la opcion de poner una imagen para esos casos en los que no existe una foto para ese ejercicio,
+
+cada ejercicio que el PROFESOR le asigne a un CLIENTE se va a inicializar con esa imagen base, si el ejercicio que 
+destine tiene una foto, el PROFESOR debera seleccionarla, de lo contrario deja la predeterminada 
+
+el usuario ADMIN tiene la posibilidad de crear y eliminar nuevos usuarios PROFESOR para que estos realizen su tarea 
+
+cada PROFESOR va a tener su SUCURSAL del gimansio
+
+los clientes no es necesario que tengan SUCURSAL ya que al pagar el mes tienen la posibilidad de asistir 
+a cualquiera de las sucursales del gimnasio 
+
+el PROFESOR crea un EJERCICIO para el cliente, con el conjunto de ejercicios crea la RUTINA 
+
+la entidad EJERCICIO va a componerse de un nombre, una foto, grupo muscular, series, repeticiones y alguna observacion
+que el PROFESOR considere necesaria
+
+grupo muscular va a ser un arreglo de enums
+
+cada EJERCICIO que el PROFESOR crea para un CLIENTE, se va agregando a una lista de EJERCICIO que cuando el
+PROFESOR lo desee crea la RUTINA que va a estar compuesta por esa lista, el id, el nombre de la rutina, los dias que 
+debe hacerse esa rutina, la fecha de la ultima actualizacion de esa rutina y a que CLIENTE esta destinada
+
+la vista de la RUTINA va a ser descargada por pdf para que el PROFESOR la envie al CLIENTE por su medio de contacto
+
+entidad TRAINER {
+
+    long id 
+    string fullName
+    string dni 
+    Branch branch 
+}
+
+entidad BRANCH {
+
+    long id
+    string adress 
+}
+
+
+entidad EXERSICE {
+
+    long id
+    string name
+    string photo 
+    list<muscleGroup> muscleGroups
+    string sets
+    string reps
+    boolean toFailure
+    string consideration
+}
+
+entidad CLIENT {
+
+    long id
+    string fullName
+    string mail
+    string phone
+}
+
+enum muscleGroup {
+
+    Buttocks,
+    Hamstrings,
+    Quadriceps,
+    Adductors,
+    Calf,
+    Biceps,
+    Triceps,
+    Chest,
+    Abdomen,
+    Back 
+
+    Glúteos, 
+    Isquiotibiales, 
+    Cuádriceps, 
+    Aductores,
+    Gemelos, 
+    Bíceps, 
+    Tríceps, 
+    Pecho, 
+    Abdomen, 
+    Espalda
+}
+
+
+entidad  {}
+entidad  {}
+entidad  {}
+
