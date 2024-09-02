@@ -1,5 +1,6 @@
 package com.matias.exercise_routine_gym_api.api_gym.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -27,6 +28,7 @@ public class Exercise {
     private String consideration;
 
     public Exercise() {
+        reps = new ArrayList<>();
     }
 
     public Long getId() {

@@ -1,5 +1,6 @@
 package com.matias.exercise_routine_gym_api.api_gym.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class TrainingPlanEntity {
     private Date creationDate;
 
     public TrainingPlanEntity() {
+        routines_id = new ArrayList<>();
     }
 
     public Long getId() {

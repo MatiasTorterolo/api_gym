@@ -1,10 +1,10 @@
 package com.matias.exercise_routine_gym_api.api_gym.model_gym;
 
-public class MuscleGroup {
+public class Role {
 
     private String name;
 
-    public MuscleGroup(String name) {
+    public Role(String name) {
         this.name = name;
     }
 
@@ -15,4 +15,5 @@ public class MuscleGroup {
     public void setName(String name) {
         this.name = name;
     }
+
 }
