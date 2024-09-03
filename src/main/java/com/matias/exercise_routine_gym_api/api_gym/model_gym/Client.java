@@ -10,21 +10,18 @@ public class Client {
 
     private String phone;
 
+    private String emergencyPhone;
+
     private String email;
 
     private List<TrainingPlan> trainingPlans;
 
-    public Client(String name, String dni, String phone, String email) {
+    public Client(String name, String dni, String phone, String emergencyPhone, String email,
+            List<TrainingPlan> trainingPlans) {
         this.name = name;
         this.dni = dni;
         this.phone = phone;
-        this.email = email;
-    }
-
-    public Client(String name, String dni, String phone, String email, List<TrainingPlan> trainingPlans) {
-        this.name = name;
-        this.dni = dni;
-        this.phone = phone;
+        this.emergencyPhone = emergencyPhone;
         this.email = email;
         this.trainingPlans = trainingPlans;
     }
@@ -59,6 +56,22 @@ public class Client {
 
     public void setTrainingPlans(List<TrainingPlan> trainingPlans) {
         this.trainingPlans = trainingPlans;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getEmergencyPhone() {
+        return emergencyPhone;
+    }
+
+    public void setEmergencyPhone(String emergencyPhone) {
+        this.emergencyPhone = emergencyPhone;
     }
 
 }
