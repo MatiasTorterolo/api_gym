@@ -21,7 +21,7 @@ public class ClientEntity {
     private String name;
 
     @NotBlank
-    @Size(min = 8)
+    @Size(min = 8, max = 10)
     @Column(unique = true)
     private String dni;
 
@@ -35,8 +35,8 @@ public class ClientEntity {
     private String emergencyPhone;
 
     @NotBlank
-    @Column(unique = true)
     @Size(min = 12)
+    @Column(unique = true)
     private String email;
 
     public ClientEntity() {

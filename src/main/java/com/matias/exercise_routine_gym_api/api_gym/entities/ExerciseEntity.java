@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -20,9 +21,13 @@ public class ExerciseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // relacion unidireccional, solo esta entidad tiene una referencia a la entidad
+    // musculo
     @ManyToOne
     private PhotoEntity photo;
 
+    // relacion unidireccional, solo esta entidad tiene una referencia a la entidad
+    // musculo
     @ManyToOne
     private MuscleEntity muscle;
 
@@ -30,7 +35,7 @@ public class ExerciseEntity {
     @Size(min = 2, max = 8)
     private Integer sets;
 
-    @NotBlank
+    @NotEmpty
     private List<Integer> reps;
 
     @NotBlank
@@ -92,6 +97,18 @@ public class ExerciseEntity {
 
     public void setConsideration(String consideration) {
         this.consideration = consideration;
+    }
+
+    public MuscleEntity getMuscle() {
+        return muscle;
+    }
+
+    public void setMuscle(MuscleEntity muscle) {
+        this.muscle = muscle;
+    }
+
+    public void setSets(Integer sets) {
+        this.sets = sets;
     }
 
 }
