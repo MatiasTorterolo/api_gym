@@ -1,13 +1,19 @@
 package com.matias.exercise_routine_gym_api.api_gym.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class MuscleEntity {
@@ -17,12 +23,18 @@ public class MuscleEntity {
     private Long id;
 
     @NotBlank
+    @Size(min = 2, max = 30)
     private String name;
 
-    private List<Long> musclePart_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "muscleGroup_id")
+    private MuscleGroupEntity muscleGroup;
+
+    @OneToMany(mappedBy = "muscle", cascade = CascadeType.ALL, orphanRemoval = true)
+    @NotEmpty
+    private List<MusclePartEntity> musclePart;
 
     public MuscleEntity() {
-        musclePart_id = new ArrayList<>();
     }
 
     public String getName() {
@@ -33,12 +45,20 @@ public class MuscleEntity {
         this.name = name;
     }
 
-    public List<Long> getMusclePart_id() {
-        return musclePart_id;
+    public MuscleGroupEntity getMuscleGroup() {
+        return muscleGroup;
     }
 
-    public void setMusclePart_id(List<Long> musclePart_id) {
-        this.musclePart_id = musclePart_id;
+    public void setMuscleGroup(MuscleGroupEntity muscleGroup) {
+        this.muscleGroup = muscleGroup;
+    }
+
+    public List<MusclePartEntity> getMuscleParts() {
+        return musclePart;
+    }
+
+    public void setMusclePart(List<MusclePartEntity> musclePart) {
+        this.musclePart = musclePart;
     }
 
     public Long getId() {
