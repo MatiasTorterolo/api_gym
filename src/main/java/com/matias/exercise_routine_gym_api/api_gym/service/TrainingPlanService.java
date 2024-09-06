@@ -50,8 +50,8 @@ public class TrainingPlanService implements IService<TrainingPlanEntity> {
             // Optional<TrainingPlanTypeEntity> tpte =
             // trainingPlanTypeRepository.findById(id);
 
-            trainingPlanEntity.setType_id(entity.getType_id());
-            trainingPlanEntity.setRoutines_id(entity.getRoutines_id());
+            trainingPlanEntity.setType(entity.getType());
+            trainingPlanEntity.setRoutines(entity.getRoutines());
 
             // optional con el objeto actualizado
             return Optional.of(trainingPlanRepository.save(entity));

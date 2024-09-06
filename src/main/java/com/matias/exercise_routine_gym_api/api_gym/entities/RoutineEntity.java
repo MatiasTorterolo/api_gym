@@ -1,13 +1,16 @@
 package com.matias.exercise_routine_gym_api.api_gym.entities;
 
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class RoutineEntity {
@@ -16,43 +19,63 @@ public class RoutineEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long muscleGroup_id;
+    @ManyToOne
+    @JoinColumn(name = "muscleGroup_id")
+    private MuscleGroupEntity muscleGroup;
 
-    private List<Long> exersice_id;
+    @OneToMany(mappedBy = "routine", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ExerciseEntity> exersices;
 
-    private List<DayOfWeek> days;
+    // esta lista en la entidad deberia ser de enteros ya que en el dominio, la
+    // lista
+    // seria de "DaysOfWeek" que representa a los dias de la semana en enteros del 1
+    // al 7
+    // 1 = lunes, 2 = martes, 3 = miercoles, etc
+    private List<Integer> days;
+
+    @ManyToOne
+    @JoinColumn(name = "trainingPlan_id")
+    private TrainingPlanEntity trainingPlan;
 
     public RoutineEntity() {
-        exersice_id = new ArrayList<>();
+        exersices = new ArrayList<>();
         days = new ArrayList<>();
     }
 
-    public Long getMuscleGroup_id() {
-        return muscleGroup_id;
+    public MuscleGroupEntity getMuscleGroup() {
+        return muscleGroup;
     }
 
-    public void setMuscleGroup_id(Long muscleGroup_id) {
-        this.muscleGroup_id = muscleGroup_id;
+    public void setMuscleGroup(MuscleGroupEntity muscleGroup) {
+        this.muscleGroup = muscleGroup;
     }
 
-    public List<Long> getExersice_id() {
-        return exersice_id;
+    public List<ExerciseEntity> getExersices() {
+        return exersices;
     }
 
-    public void setExersice_id(List<Long> exersice_id) {
-        this.exersice_id = exersice_id;
+    public void setExersices(List<ExerciseEntity> exersices) {
+        this.exersices = exersices;
     }
 
-    public List<DayOfWeek> getDays() {
+    public List<Integer> getDays() {
         return days;
     }
 
-    public void setDays(List<DayOfWeek> days) {
+    public void setDays(List<Integer> days) {
         this.days = days;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public TrainingPlanEntity getTrainingPlan() {
+        return trainingPlan;
+    }
+
+    public void setTrainingPlan(TrainingPlanEntity trainingPlan) {
+        this.trainingPlan = trainingPlan;
     }
 
 }

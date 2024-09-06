@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class TrainingPlanEntity {
@@ -16,54 +20,61 @@ public class TrainingPlanEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long type_id;
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private TrainingPlanTypeEntity type;
 
-    private Long client_id;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private ClientEntity client;
 
-    private Long trainer_id;
+    @ManyToOne
+    @JoinColumn(name = "trainer_id")
+    private TrainerEntity trainer;
 
-    private List<Long> routines_id;
+    @OneToMany(mappedBy = "trainingPlan", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RoutineEntity> routines;
 
     private Date creationDate;
 
     public TrainingPlanEntity() {
-        routines_id = new ArrayList<>();
+        routines = new ArrayList<>();
     }
 
     public Long getId() {
         return id;
     }
 
-    public Long getType_id() {
-        return type_id;
+    public TrainingPlanTypeEntity getType() {
+        return type;
     }
 
-    public Long getClient_id() {
-        return client_id;
+    public ClientEntity getClient() {
+        return client;
     }
 
-    public void setClient_id(Long client_id) {
-        this.client_id = client_id;
+    public void setClient(ClientEntity client) {
+        this.client = client;
     }
 
-    public List<Long> getRoutines_id() {
-        return routines_id;
+    public List<RoutineEntity> getRoutines() {
+        return routines;
     }
 
-    public void setRoutines_id(List<Long> routines_id) {
-        this.routines_id = routines_id;
+    public void setRoutines(List<RoutineEntity> routines) {
+        this.routines = routines;
     }
 
     public Date getCreationDate() {
         return creationDate;
     }
 
-    public Long getTrainer_id() {
-        return trainer_id;
+    public TrainerEntity getTrainer() {
+        return trainer;
     }
 
-    public void setType_id(Long type_id) {
-        this.type_id = type_id;
+    public void setType(TrainingPlanTypeEntity type) {
+        this.type = type;
     }
 
     // clientEntity_id MuscleGroupRepository

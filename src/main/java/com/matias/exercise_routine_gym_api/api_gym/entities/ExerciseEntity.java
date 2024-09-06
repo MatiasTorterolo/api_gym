@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -24,11 +25,13 @@ public class ExerciseEntity {
     // relacion unidireccional, solo esta entidad tiene una referencia a la entidad
     // musculo
     @ManyToOne
+    @JoinColumn(name = "phot_id")
     private PhotoEntity photo;
 
     // relacion unidireccional, solo esta entidad tiene una referencia a la entidad
     // musculo
     @ManyToOne
+    @JoinColumn(name = "muscle_id")
     private MuscleEntity muscle;
 
     @NotBlank
@@ -42,6 +45,10 @@ public class ExerciseEntity {
     private boolean toFailure;
 
     private String consideration;
+
+    @ManyToOne
+    @JoinColumn(name = "routine_id")
+    private RoutineEntity routine;
 
     public ExerciseEntity() {
         reps = new ArrayList<>();
@@ -109,6 +116,14 @@ public class ExerciseEntity {
 
     public void setSets(Integer sets) {
         this.sets = sets;
+    }
+
+    public RoutineEntity getRoutine() {
+        return routine;
+    }
+
+    public void setRoutine(RoutineEntity routine) {
+        this.routine = routine;
     }
 
 }
