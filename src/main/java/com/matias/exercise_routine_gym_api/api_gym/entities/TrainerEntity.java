@@ -5,13 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "clients")
-public class ClientEntity {
+@Table(name = "trainers")
+public class TrainerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +28,10 @@ public class ClientEntity {
     @Column(unique = true)
     private String dni;
 
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private BranchEntity branch;
+
     @NotBlank
     @Size(min = 12)
     @Column(unique = true)
@@ -36,11 +42,7 @@ public class ClientEntity {
     @Column(unique = true)
     private String phone;
 
-    @NotBlank
-    @Size(min = 10, max = 10)
-    private String emergencyPhone;
-
-    public ClientEntity() {
+    public TrainerEntity() {
     }
 
     public Long getId() {
@@ -55,12 +57,16 @@ public class ClientEntity {
         return dni;
     }
 
-    public String getPhone() {
-        return phone;
+    public BranchEntity getBranch() {
+        return branch;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public void setName(String name) {
@@ -71,20 +77,16 @@ public class ClientEntity {
         this.dni = dni;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setBranch(BranchEntity branch) {
+        this.branch = branch;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getEmergencyPhone() {
-        return emergencyPhone;
-    }
-
-    public void setEmergencyPhone(String emergencyPhone) {
-        this.emergencyPhone = emergencyPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
 }

@@ -1,12 +1,16 @@
 package com.matias.exercise_routine_gym_api.api_gym.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class UserEntity {
@@ -15,17 +19,24 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(min = 8, max = 10)
+    @Column(unique = true)
     private String dni;
 
+    @NotBlank
+    @Size(min = 8)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    private List<Long> rolesEntity_id;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private RoleEntity roleEntity;
 
     private boolean enabled;
 
     public UserEntity() {
 
-        rolesEntity_id = new ArrayList<>();
     }
 
     public String getDni() {
@@ -44,12 +55,12 @@ public class UserEntity {
         this.password = password;
     }
 
-    public List<Long> getRolesEntity_id() {
-        return rolesEntity_id;
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
     }
 
-    public void setRolesEntity_id(List<Long> rolesEntity_id) {
-        this.rolesEntity_id = rolesEntity_id;
+    public void setRolesEntity_id(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
     }
 
     public boolean isEnabled() {
