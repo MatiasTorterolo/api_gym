@@ -2,6 +2,8 @@ package com.matias.exercise_routine_gym_api.api_gym.model_gym;
 
 public class Exercise {
 
+    private Long id;
+
     private String name;
 
     private String photo; // este string va a tener que hacer referencia a la url de una foto asi aunq
@@ -18,8 +20,23 @@ public class Exercise {
 
     private String consideration;
 
+    public Exercise() {
+    }
+
     public Exercise(String name, String photo, Muscle muscle, int sets, int reps, boolean toFailure,
             String consideration) {
+        this.name = name;
+        this.photo = photo;
+        this.muscle = muscle;
+        this.sets = sets;
+        this.reps = reps;
+        this.toFailure = toFailure;
+        this.consideration = consideration;
+    }
+
+    public Exercise(Long id, String name, String photo, Muscle muscle, int sets, int reps, boolean toFailure,
+            String consideration) {
+        this.id = id;
         this.name = name;
         this.photo = photo;
         this.muscle = muscle;
@@ -83,6 +100,10 @@ public class Exercise {
 
     public void setConsideration(String consideration) {
         this.consideration = consideration;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }

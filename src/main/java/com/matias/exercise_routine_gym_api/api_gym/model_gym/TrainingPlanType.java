@@ -10,9 +10,19 @@ public class TrainingPlanType {
     // regeneración después de lesiones)
     // Planes de entrenamiento de RESISTENCIA (atención en la resistencia básica o
     // el entrenamiento de intervalos)
+    private Long id;
+
     private String type;
 
+    public TrainingPlanType() {
+    }
+
     public TrainingPlanType(String type) {
+        this.type = type;
+    }
+
+    public TrainingPlanType(Long id, String type) {
+        this.id = id;
         this.type = type;
     }
 
@@ -23,4 +33,9 @@ public class TrainingPlanType {
     public void setType(String type) {
         this.type = type;
     }
+
+    public Long getId() {
+        return id;
+    }
+
 }

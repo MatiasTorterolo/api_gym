@@ -4,11 +4,22 @@ import java.util.List;
 
 public class Muscle {
 
+    private Long id;
+
     private String name;
 
     private List<MusclePart> muscleParts;
 
+    public Muscle() {
+    }
+
     public Muscle(String name, List<MusclePart> muscleParts) {
+        this.name = name;
+        this.muscleParts = muscleParts;
+    }
+
+    public Muscle(Long id, String name, List<MusclePart> muscleParts) {
+        this.id = id;
         this.name = name;
         this.muscleParts = muscleParts;
     }
@@ -28,4 +39,9 @@ public class Muscle {
     public void setMusclePart(List<MusclePart> muscleParts) {
         this.muscleParts = muscleParts;
     }
+
+    public Long getId() {
+        return id;
+    }
+
 }

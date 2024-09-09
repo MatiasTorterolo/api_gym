@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Client {
 
+    private Long id;
+
     private String name;
 
     private String dni;
@@ -16,8 +18,22 @@ public class Client {
 
     private List<TrainingPlan> trainingPlans;
 
+    public Client() {
+    }
+
     public Client(String name, String dni, String phone, String emergencyPhone, String email,
             List<TrainingPlan> trainingPlans) {
+        this.name = name;
+        this.dni = dni;
+        this.phone = phone;
+        this.emergencyPhone = emergencyPhone;
+        this.email = email;
+        this.trainingPlans = trainingPlans;
+    }
+
+    public Client(Long id, String name, String dni, String phone, String emergencyPhone, String email,
+            List<TrainingPlan> trainingPlans) {
+        this.id = id;
         this.name = name;
         this.dni = dni;
         this.phone = phone;
@@ -72,6 +88,10 @@ public class Client {
 
     public void setEmergencyPhone(String emergencyPhone) {
         this.emergencyPhone = emergencyPhone;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }

@@ -4,13 +4,25 @@ import java.util.List;
 
 public class User {
 
+    private Long id;
+
     private String dni;
 
     private String password;
 
     private List<Role> role;
 
+    public User() {
+    }
+
     public User(String dni, String password, List<Role> role) {
+        this.dni = dni;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(Long id, String dni, String password, List<Role> role) {
+        this.id = id;
         this.dni = dni;
         this.password = password;
         this.role = role;
@@ -38,6 +50,10 @@ public class User {
 
     public void setRole(List<Role> role) {
         this.role = role;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }

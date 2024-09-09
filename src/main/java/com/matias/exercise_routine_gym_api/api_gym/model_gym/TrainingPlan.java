@@ -5,6 +5,8 @@ import java.util.List;
 
 public class TrainingPlan {
 
+    private Long id;
+
     private TrainingPlanType name;
 
     private Client client;
@@ -15,8 +17,21 @@ public class TrainingPlan {
 
     private Date creationDate;
 
+    public TrainingPlan() {
+    }
+
     public TrainingPlan(TrainingPlanType name, Client client, Trainer trainer, List<Routine> routines,
             Date creationDate) {
+        this.name = name;
+        this.client = client;
+        this.trainer = trainer;
+        this.routines = routines;
+        this.creationDate = creationDate;
+    }
+
+    public TrainingPlan(Long id, TrainingPlanType name, Client client, Trainer trainer, List<Routine> routines,
+            Date creationDate) {
+        this.id = id;
         this.name = name;
         this.client = client;
         this.trainer = trainer;
@@ -62,6 +77,10 @@ public class TrainingPlan {
 
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }
