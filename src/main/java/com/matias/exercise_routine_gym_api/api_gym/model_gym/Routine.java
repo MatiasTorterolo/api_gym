@@ -5,13 +5,25 @@ import java.util.List;
 
 public class Routine {
 
+    private Long id;
+
     private MuscleGroup muscleGroup;
 
     private List<Exercise> exersices;
 
     private List<DayOfWeek> days;
 
+    public Routine() {
+    }
+
     public Routine(MuscleGroup muscleGroup, List<Exercise> exersices, List<DayOfWeek> days) {
+        this.muscleGroup = muscleGroup;
+        this.exersices = exersices;
+        this.days = days;
+    }
+
+    public Routine(Long id, MuscleGroup muscleGroup, List<Exercise> exersices, List<DayOfWeek> days) {
+        this.id = id;
         this.muscleGroup = muscleGroup;
         this.exersices = exersices;
         this.days = days;
@@ -41,4 +53,7 @@ public class Routine {
         this.muscleGroup = muscleGroup;
     }
 
+    public Long getId() {
+        return id;
+    }
 }

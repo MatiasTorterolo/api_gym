@@ -2,6 +2,8 @@ package com.matias.exercise_routine_gym_api.api_gym.model_gym;
 
 public class Trainer {
 
+    private Long id;
+
     private String name;
 
     private String dni;
@@ -16,6 +18,15 @@ public class Trainer {
     }
 
     public Trainer(String name, String dni, Branch branch, String email, String phone) {
+        this.name = name;
+        this.dni = dni;
+        this.branch = branch;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public Trainer(Long id, String name, String dni, Branch branch, String email, String phone) {
+        this.id = id;
         this.name = name;
         this.dni = dni;
         this.branch = branch;
@@ -49,6 +60,10 @@ public class Trainer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }
