@@ -103,7 +103,7 @@ public abstract class JPARepositoryBehavior<T, ID> implements IRepository<T, ID>
 
         try {
 
-            String jpql = "SELECT * FROM " + entityClass.getSimpleName(); // fijarse despues si hay que poner + ";"
+            String jpql = "SELECT t FROM " + entityClass.getSimpleName() + " t";
 
             TypedQuery<T> query = entityManager.createQuery(jpql, entityClass);
 
@@ -119,7 +119,7 @@ public abstract class JPARepositoryBehavior<T, ID> implements IRepository<T, ID>
 
         try {
 
-            String jpql = "SELECT * FROM " + entityClass.getSimpleName() + " t WHERE t.name = :name";
+            String jpql = "SELECT t FROM " + entityClass.getSimpleName() + " t WHERE t.name = :name";
 
             TypedQuery<T> query = entityManager.createQuery(jpql, entityClass);
 

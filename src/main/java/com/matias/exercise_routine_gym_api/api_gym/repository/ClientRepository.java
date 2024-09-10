@@ -27,7 +27,7 @@ public class ClientRepository extends JPARepositoryBehavior<ClientEntity, Long> 
 
         try {
 
-            String jpql = "SELECT c.dni FROM ClientEntity c WHERE c.dni = :dni";
+            String jpql = "SELECT c FROM ClientEntity c WHERE c.dni = :dni";
 
             ClientEntity entity = entityManager.createQuery(jpql, ClientEntity.class)
                     .setParameter("dni", dni)
@@ -37,7 +37,7 @@ public class ClientRepository extends JPARepositoryBehavior<ClientEntity, Long> 
 
         } catch (Exception e) {
 
-            return Optional.empty();
+            throw new RuntimeException(String.format("Error, the Client with dni: %s doesn't exist", dni));
         }
     }
 
@@ -46,7 +46,7 @@ public class ClientRepository extends JPARepositoryBehavior<ClientEntity, Long> 
 
         try {
 
-            String jpql = "SELECT c.phone FROM ClientEntity c WHERE c.phone = :phone";
+            String jpql = "SELECT c FROM ClientEntity c WHERE c.phone = :phone";
 
             ClientEntity entity = entityManager.createQuery(jpql, ClientEntity.class)
                     .setParameter("phone", phone)
@@ -56,7 +56,7 @@ public class ClientRepository extends JPARepositoryBehavior<ClientEntity, Long> 
 
         } catch (Exception e) {
 
-            return Optional.empty();
+            throw new RuntimeException(String.format("Error, the Client with phone number: %s doesn't exist", phone));
         }
     }
 
@@ -65,7 +65,7 @@ public class ClientRepository extends JPARepositoryBehavior<ClientEntity, Long> 
 
         try {
 
-            String jpql = "SELECT c.email FROM ClientEntity c WHERE c.email = :email";
+            String jpql = "SELECT c FROM ClientEntity c WHERE c.email = :email";
 
             ClientEntity entity = entityManager.createQuery(jpql, ClientEntity.class)
                     .setParameter("email", email)
@@ -75,27 +75,27 @@ public class ClientRepository extends JPARepositoryBehavior<ClientEntity, Long> 
 
         } catch (Exception e) {
 
-            return Optional.empty();
+            throw new RuntimeException(String.format("Error, the Client with email: %s doesn't exist", email));
         }
     }
 
     @Override
-    public Optional<List<TrainingPlanEntity>> findTrainingPlansById(Long clientEntity_id) {
+    public Optional<List<TrainingPlanEntity>> findTrainingPlansById(Long client_id) {
 
         try {
 
-            String jpql = "SELECT * FROM TrainingPlanEntity t WHERE t.client_entity_id = :clientEntity_id";
+            String jpql = "SELECT t FROM TrainingPlanEntity t WHERE t.client_id = :client_id";
 
             @SuppressWarnings("unchecked")
             List<TrainingPlanEntity> entityList = (List<TrainingPlanEntity>) entityManager.createQuery(jpql)
-                    .setParameter("clientEntity_id", clientEntity_id)
+                    .setParameter("client_id", client_id)
                     .getResultList();
 
             return Optional.ofNullable(entityList);
 
         } catch (Exception e) {
 
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error, this Client doesn't have training plans", e);
         }
     }
 

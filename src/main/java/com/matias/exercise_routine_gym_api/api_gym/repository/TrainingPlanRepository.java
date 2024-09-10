@@ -21,7 +21,7 @@ public class TrainingPlanRepository extends JPARepositoryBehavior<TrainingPlanEn
 
         try {
 
-            String jpql = "SELECT * FROM TrainingPlanEntity t WHERE t.type = :type";
+            String jpql = "SELECT t FROM TrainingPlanEntity t WHERE t.type = :type";
 
             @SuppressWarnings("unchecked")
             List<TrainingPlanEntity> entityList = (List<TrainingPlanEntity>) entityManager.createQuery(jpql)
@@ -32,7 +32,7 @@ public class TrainingPlanRepository extends JPARepositoryBehavior<TrainingPlanEn
 
         } catch (Exception e) {
 
-            throw new RuntimeException("Error finding plan", e);
+            throw new RuntimeException("Error finding plans", e);
         }
 
     }
