@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.matias.exercise_routine_gym_api.api_gym.entities.TrainingPlanEntity;
 import com.matias.exercise_routine_gym_api.api_gym.repository.TrainingPlanRepository;
@@ -15,18 +16,21 @@ public class TrainingPlanService implements IService<TrainingPlanEntity> {
     @Autowired
     private TrainingPlanRepository trainingPlanRepository;
 
+    @Transactional(readOnly = true)
     @Override
     public List<TrainingPlanEntity> findAll() {
 
         return trainingPlanRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<TrainingPlanEntity> findById(Long id) {
 
         return trainingPlanRepository.findById(id);
     }
 
+    @Transactional
     @Override
     public TrainingPlanEntity create(TrainingPlanEntity entity) {
 
@@ -37,6 +41,7 @@ public class TrainingPlanService implements IService<TrainingPlanEntity> {
         return trainingPlanRepository.save(entity);
     }
 
+    @Transactional
     @Override
     public Optional<TrainingPlanEntity> update(Long id, TrainingPlanEntity entity) {
 
@@ -61,6 +66,7 @@ public class TrainingPlanService implements IService<TrainingPlanEntity> {
         return TrainingPlanEntityOptional;
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
 
