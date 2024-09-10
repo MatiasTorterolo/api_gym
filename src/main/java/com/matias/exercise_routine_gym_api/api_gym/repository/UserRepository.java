@@ -20,7 +20,7 @@ public class UserRepository extends JPARepositoryBehavior<UserEntity, Long>
 
         try {
 
-            String jpql = "SELECT * FROM UserEntity u WHERE u.dni = :dni";
+            String jpql = "SELECT u FROM UserEntity u WHERE u.dni = :dni";
 
             UserEntity entity = entityManager.createQuery(jpql, UserEntity.class)
                     .setParameter("dni", dni)
@@ -30,7 +30,7 @@ public class UserRepository extends JPARepositoryBehavior<UserEntity, Long>
 
         } catch (Exception e) {
 
-            throw new RuntimeException("Error, these user doesn't exist", e);
+            throw new RuntimeException(String.format("Error, the user with dni: %s doesn't exist", dni));
         }
     }
 
