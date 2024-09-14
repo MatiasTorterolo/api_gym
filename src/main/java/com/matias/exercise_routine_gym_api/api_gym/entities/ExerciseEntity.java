@@ -62,10 +62,6 @@ public class ExerciseEntity {
         return photo;
     }
 
-    public MuscleEntity getMuscleEntity() {
-        return muscle;
-    }
-
     public Integer getSets() {
         return sets;
     }
@@ -84,14 +80,6 @@ public class ExerciseEntity {
 
     public void setPhoto(PhotoEntity photo) {
         this.photo = photo;
-    }
-
-    public void setMuscleEntity(MuscleEntity muscle) {
-        this.muscle = muscle;
-    }
-
-    public void setSets(int sets) {
-        this.sets = sets;
     }
 
     public void setReps(List<Integer> reps) {

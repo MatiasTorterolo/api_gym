@@ -50,12 +50,12 @@ public class TrainingPlanTypeService implements IService<TrainingPlanTypeEntity>
         // si esta presente se retorna el optional de ese plan ya actualizado
         if (TrainingPlanTypeEntityOptional.isPresent()) {
 
-            TrainingPlanTypeEntity trainingPlanTypeEntity = TrainingPlanTypeEntityOptional.orElseThrow();
+            TrainingPlanTypeEntity trainingPlanTypeEntity = TrainingPlanTypeEntityOptional.get();
 
             trainingPlanTypeEntity.setName(entity.getName());
 
             // optional con el objeto actualizado
-            return Optional.of(trainingPlanTypeRepository.save(entity));
+            return Optional.of(trainingPlanTypeRepository.save(trainingPlanTypeEntity));
         }
 
         // si esta vacio se retorna el optional vacio (empty) valga la redundancia...

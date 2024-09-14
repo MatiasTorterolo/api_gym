@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "branchs")
+@Table(name = "branches")
 public class BranchEntity {
 
     @Id
@@ -18,7 +18,7 @@ public class BranchEntity {
 
     @NotBlank
     @Size(min = 4, max = 30)
-    private String adress;
+    private String address;
 
     @NotBlank
     @Size(min = 1, max = 6)
@@ -27,12 +27,12 @@ public class BranchEntity {
     public BranchEntity() {
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getNumber() {
