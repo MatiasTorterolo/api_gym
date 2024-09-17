@@ -55,11 +55,11 @@ public class UserEntity {
         this.password = password;
     }
 
-    public RoleEntity getRoleEntity() {
+    public RoleEntity getRoles() {
         return roleEntity;
     }
 
-    public void setRolesEntity_id(RoleEntity roleEntity) {
+    public void setRoles(RoleEntity roleEntity) {
         this.roleEntity = roleEntity;
     }
 

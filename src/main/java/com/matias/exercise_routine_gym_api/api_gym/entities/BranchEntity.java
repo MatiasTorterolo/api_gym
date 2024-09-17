@@ -18,7 +18,7 @@ public class BranchEntity {
 
     @NotBlank
     @Size(min = 4, max = 30)
-    private String address;
+    private String street;
 
     @NotBlank
     @Size(min = 1, max = 6)
@@ -27,12 +27,12 @@ public class BranchEntity {
     public BranchEntity() {
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getNumber() {
