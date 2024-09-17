@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.matias.exercise_routine_gym_api.api_gym.entities.RoutineEntity;
 import com.matias.exercise_routine_gym_api.api_gym.repository.RoutineRepository;
@@ -15,6 +16,7 @@ public class RoutineService implements IService<RoutineEntity> {
     @Autowired
     private RoutineRepository routineRepository;
 
+    @Transactional
     @Override
     public RoutineEntity create(RoutineEntity entity) {
 
@@ -26,6 +28,7 @@ public class RoutineService implements IService<RoutineEntity> {
 
     }
 
+    @Transactional
     @Override
     public Optional<RoutineEntity> update(Long id, RoutineEntity entity) {
 
@@ -45,21 +48,22 @@ public class RoutineService implements IService<RoutineEntity> {
         return optionalRoutineEntity;
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
 
         routineRepository.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<RoutineEntity> findAll() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<RoutineEntity> findById(Long id) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 

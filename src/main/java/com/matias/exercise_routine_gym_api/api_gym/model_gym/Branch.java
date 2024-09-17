@@ -4,30 +4,30 @@ public class Branch {
 
     private Long id;
 
-    private String adress;
+    private String street;
 
     private String number;
 
     public Branch() {
     }
 
-    public Branch(String adress, String number) {
-        this.adress = adress;
+    public Branch(String street, String number) {
+        this.street = street;
         this.number = number;
     }
 
-    public Branch(Long id, String adress, String number) {
+    public Branch(Long id, String street, String number) {
         this.id = id;
-        this.adress = adress;
+        this.street = street;
         this.number = number;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getNumber() {
