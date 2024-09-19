@@ -1,7 +1,6 @@
 package com.matias.exercise_routine_gym_api.api_gym.entities;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,13 +20,20 @@ public class MusclePartEntity {
     @Size(min = 2, max = 30)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "muscle_id")
     @NotBlank
     @Size(min = 2, max = 30)
     private MuscleEntity muscle;
 
     public MusclePartEntity() {
+    }
+
+    public MusclePartEntity(Long id, @NotBlank @Size(min = 2, max = 30) String name,
+            @NotBlank @Size(min = 2, max = 30) MuscleEntity muscle) {
+        this.id = id;
+        this.name = name;
+        this.muscle = muscle;
     }
 
     public String getName() {

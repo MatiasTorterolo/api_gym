@@ -8,19 +8,23 @@ public class Muscle {
 
     private String name;
 
+    private MuscleGroup muscleGroup;
+
     private List<MusclePart> muscleParts;
 
     public Muscle() {
     }
 
-    public Muscle(String name, List<MusclePart> muscleParts) {
+    public Muscle(String name, MuscleGroup muscleGroup, List<MusclePart> muscleParts) {
         this.name = name;
+        this.muscleGroup = muscleGroup;
         this.muscleParts = muscleParts;
     }
 
-    public Muscle(Long id, String name, List<MusclePart> muscleParts) {
+    public Muscle(Long id, String name, MuscleGroup muscleGroup, List<MusclePart> muscleParts) {
         this.id = id;
         this.name = name;
+        this.muscleGroup = muscleGroup;
         this.muscleParts = muscleParts;
     }
 
@@ -42,6 +46,18 @@ public class Muscle {
 
     public Long getId() {
         return id;
+    }
+
+    public MuscleGroup getMuscleGroup() {
+        return muscleGroup;
+    }
+
+    public void setMuscleGroup(MuscleGroup muscleGroup) {
+        this.muscleGroup = muscleGroup;
+    }
+
+    public void setMuscleParts(List<MusclePart> muscleParts) {
+        this.muscleParts = muscleParts;
     }
 
 }

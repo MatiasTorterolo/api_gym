@@ -43,6 +43,18 @@ public class ClientEntity {
     public ClientEntity() {
     }
 
+    public ClientEntity(Long id, @NotBlank @Size(min = 5, max = 50) String name,
+            @NotBlank @Size(min = 8, max = 9) String dni, @NotBlank @Size(min = 12) String email,
+            @NotBlank @Size(min = 10, max = 10) String phone,
+            @NotBlank @Size(min = 10, max = 10) String emergencyPhone) {
+        this.id = id;
+        this.name = name;
+        this.dni = dni;
+        this.email = email;
+        this.phone = phone;
+        this.emergencyPhone = emergencyPhone;
+    }
+
     public Long getId() {
         return id;
     }

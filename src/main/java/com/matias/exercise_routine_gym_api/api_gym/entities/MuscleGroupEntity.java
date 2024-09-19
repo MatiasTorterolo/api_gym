@@ -32,6 +32,13 @@ public class MuscleGroupEntity {
         muscles = new ArrayList<>();
     }
 
+    public MuscleGroupEntity(Long id, @NotBlank @Size(min = 2, max = 30) String name,
+            @NotEmpty List<MuscleEntity> muscles) {
+        this.id = id;
+        this.name = name;
+        this.muscles = muscles;
+    }
+
     public String getName() {
         return name;
     }

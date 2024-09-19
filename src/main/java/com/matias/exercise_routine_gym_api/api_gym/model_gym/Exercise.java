@@ -1,10 +1,10 @@
 package com.matias.exercise_routine_gym_api.api_gym.model_gym;
 
+import java.util.List;
+
 public class Exercise {
 
     private Long id;
-
-    private String name;
 
     private String photo; // este string va a tener que hacer referencia a la url de una foto asi aunq
                           // hayan 50 ejercicios iguales de biceps, solo se guarda en la db la referencia
@@ -12,9 +12,9 @@ public class Exercise {
 
     private Muscle muscle;
 
-    private int sets;
+    private Integer sets;
 
-    private int reps;
+    private List<Integer> reps;
 
     private boolean toFailure;
 
@@ -23,9 +23,9 @@ public class Exercise {
     public Exercise() {
     }
 
-    public Exercise(String name, String photo, Muscle muscle, int sets, int reps, boolean toFailure,
+    public Exercise(String photo, Muscle muscle, Integer sets, List<Integer> reps, boolean toFailure,
             String consideration) {
-        this.name = name;
+
         this.photo = photo;
         this.muscle = muscle;
         this.sets = sets;
@@ -34,24 +34,15 @@ public class Exercise {
         this.consideration = consideration;
     }
 
-    public Exercise(Long id, String name, String photo, Muscle muscle, int sets, int reps, boolean toFailure,
+    public Exercise(Long id, String photo, Muscle muscle, Integer sets, List<Integer> reps, boolean toFailure,
             String consideration) {
         this.id = id;
-        this.name = name;
         this.photo = photo;
         this.muscle = muscle;
         this.sets = sets;
         this.reps = reps;
         this.toFailure = toFailure;
         this.consideration = consideration;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPhoto() {
@@ -70,19 +61,19 @@ public class Exercise {
         this.muscle = muscle;
     }
 
-    public int getSets() {
+    public Integer getSets() {
         return sets;
     }
 
-    public void setSets(int sets) {
+    public void setSets(Integer sets) {
         this.sets = sets;
     }
 
-    public int getReps() {
+    public List<Integer> getReps() {
         return reps;
     }
 
-    public void setReps(int reps) {
+    public void setReps(List<Integer> reps) {
         this.reps = reps;
     }
 
