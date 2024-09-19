@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.matias.exercise_routine_gym_api.api_gym.entities.UserEntity;
 import com.matias.exercise_routine_gym_api.api_gym.repository.UserRepository;
@@ -15,18 +16,21 @@ public class UserService implements IService<UserEntity> {
     @Autowired
     private UserRepository userRepository;
 
+    @Transactional(readOnly = true)
     @Override
     public List<UserEntity> findAll() {
 
         return userRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<UserEntity> findById(Long id) {
 
         return userRepository.findById(id);
     }
 
+    @Transactional
     @Override
     public UserEntity create(UserEntity entity) {
 
@@ -37,6 +41,7 @@ public class UserService implements IService<UserEntity> {
         return userRepository.save(entity);
     }
 
+    @Transactional
     @Override
     public Optional<UserEntity> update(Long id, UserEntity entity) {
 
@@ -59,10 +64,12 @@ public class UserService implements IService<UserEntity> {
     @Override
     public void delete(Long id) {
 
-        // perfeccionar este mensaje
-        throw new UnsupportedOperationException("Unimplemented method 'delete', please use disabled()");
+        // se usa para en algun momento si existen usuarios con mas de 1 mes de
+        // inhabilitacion, se eliminen
+        userRepository.deleteById(id);
     }
 
+    @Transactional
     public void disable(Long id) {
 
         Optional<UserEntity> userOptional = userRepository.findById(id);

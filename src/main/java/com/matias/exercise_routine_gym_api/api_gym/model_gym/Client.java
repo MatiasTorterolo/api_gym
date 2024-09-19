@@ -1,7 +1,5 @@
 package com.matias.exercise_routine_gym_api.api_gym.model_gym;
 
-import java.util.List;
-
 public class Client {
 
     private Long id;
@@ -16,30 +14,24 @@ public class Client {
 
     private String email;
 
-    private List<TrainingPlan> trainingPlans;
-
     public Client() {
     }
 
-    public Client(String name, String dni, String phone, String emergencyPhone, String email,
-            List<TrainingPlan> trainingPlans) {
+    public Client(String name, String dni, String phone, String emergencyPhone, String email) {
         this.name = name;
         this.dni = dni;
         this.phone = phone;
         this.emergencyPhone = emergencyPhone;
         this.email = email;
-        this.trainingPlans = trainingPlans;
     }
 
-    public Client(Long id, String name, String dni, String phone, String emergencyPhone, String email,
-            List<TrainingPlan> trainingPlans) {
+    public Client(Long id, String name, String dni, String phone, String emergencyPhone, String email) {
         this.id = id;
         this.name = name;
         this.dni = dni;
         this.phone = phone;
         this.emergencyPhone = emergencyPhone;
         this.email = email;
-        this.trainingPlans = trainingPlans;
     }
 
     public String getName() {
@@ -64,14 +56,6 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<TrainingPlan> getTrainingPlans() {
-        return trainingPlans;
-    }
-
-    public void setTrainingPlans(List<TrainingPlan> trainingPlans) {
-        this.trainingPlans = trainingPlans;
     }
 
     public void setName(String name) {

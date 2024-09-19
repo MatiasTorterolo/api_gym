@@ -27,6 +27,13 @@ public class BranchEntity {
     public BranchEntity() {
     }
 
+    public BranchEntity(Long id, @NotBlank @Size(min = 4, max = 30) String street,
+            @NotBlank @Size(min = 1, max = 6) String number) {
+        this.id = id;
+        this.street = street;
+        this.number = number;
+    }
+
     public String getStreet() {
         return street;
     }

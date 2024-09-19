@@ -54,6 +54,19 @@ public class ExerciseEntity {
         reps = new ArrayList<>();
     }
 
+    public ExerciseEntity(Long id, PhotoEntity photo, MuscleEntity muscle,
+            @NotBlank @Size(min = 2, max = 8) Integer sets, @NotEmpty List<Integer> reps, @NotBlank boolean toFailure,
+            String consideration, RoutineEntity routine) {
+        this.id = id;
+        this.photo = photo;
+        this.muscle = muscle;
+        this.sets = sets;
+        this.reps = reps;
+        this.toFailure = toFailure;
+        this.consideration = consideration;
+        this.routine = routine;
+    }
+
     public Long getId() {
         return id;
     }

@@ -6,6 +6,8 @@ public class MusclePart {
 
     private String name;
 
+    private Muscle muscle;
+
     public MusclePart() {
     }
 
@@ -13,9 +15,10 @@ public class MusclePart {
         this.name = name;
     }
 
-    public MusclePart(Long id, String name) {
+    public MusclePart(Long id, String name, Muscle muscle) {
         this.id = id;
         this.name = name;
+        this.muscle = muscle;
     }
 
     public String getName() {
@@ -28,6 +31,14 @@ public class MusclePart {
 
     public Long getId() {
         return id;
+    }
+
+    public Muscle getMuscle() {
+        return muscle;
+    }
+
+    public void setMuscle(Muscle muscle) {
+        this.muscle = muscle;
     }
 
 }

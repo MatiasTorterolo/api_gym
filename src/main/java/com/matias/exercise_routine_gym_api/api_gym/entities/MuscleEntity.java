@@ -4,7 +4,6 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,7 +25,7 @@ public class MuscleEntity {
     @Size(min = 2, max = 30)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "muscleGroup_id")
     private MuscleGroupEntity muscleGroup;
 
@@ -35,6 +34,14 @@ public class MuscleEntity {
     private List<MusclePartEntity> musclePart;
 
     public MuscleEntity() {
+    }
+
+    public MuscleEntity(Long id, @NotBlank @Size(min = 2, max = 30) String name, MuscleGroupEntity muscleGroup,
+            @NotEmpty List<MusclePartEntity> musclePart) {
+        this.id = id;
+        this.name = name;
+        this.muscleGroup = muscleGroup;
+        this.musclePart = musclePart;
     }
 
     public String getName() {
